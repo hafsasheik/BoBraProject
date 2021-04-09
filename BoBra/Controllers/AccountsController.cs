@@ -20,7 +20,7 @@ namespace BoBra.Controllers
         {
             _context = context;
         }
-
+        // hej  o hå
         // GET: api/Accounts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
