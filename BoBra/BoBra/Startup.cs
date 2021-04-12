@@ -30,6 +30,8 @@ namespace BoBra
 
             services.AddControllersWithViews();
 
+            services.AddRazorPages();
+
             services.AddControllers().AddNewtonsoftJson(x => {
                 x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 x.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
@@ -51,6 +53,7 @@ namespace BoBra
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -59,7 +62,9 @@ namespace BoBra
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Properties}/{action=Index}/{id?}");
             });
         }
     }

@@ -12,47 +12,47 @@ namespace BoBra.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PropertiesController : ControllerBase
+    public class UserLoginsController : Controller
     {
         private readonly BoBraContext _context;
 
-        public PropertiesController(BoBraContext context)
+        public UserLoginsController(BoBraContext context)
         {
             _context = context;
         }
 
-        // GET: api/Properties
+        // GET: api/UserLogins
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Property>>> GetProperties()
+        public async Task<ActionResult<IEnumerable<UserLogin>>> GetUserLogins()
         {
-            return await _context.Properties.ToListAsync();
+            return await _context.UserLogins.ToListAsync();
         }
 
-        // GET: api/Properties/5
+        // GET: api/UserLogins/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Property>> GetProperty(int id)
+        public async Task<ActionResult<UserLogin>> GetUserLogin(int id)
         {
-            var @property = await _context.Properties.FindAsync(id);
+            var userLogin = await _context.UserLogins.FindAsync(id);
 
-            if (@property == null)
+            if (userLogin == null)
             {
                 return NotFound();
             }
 
-            return @property;
+            return userLogin;
         }
 
-        // PUT: api/Properties/5
+        // PUT: api/UserLogins/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProperty(int id, Property @property)
+        public async Task<IActionResult> PutUserLogin(int id, UserLogin userLogin)
         {
-            if (id != @property.PropertyID)
+            if (id != userLogin.UserID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(@property).State = EntityState.Modified;
+            _context.Entry(userLogin).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace BoBra.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PropertyExists(id))
+                if (!UserLoginExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace BoBra.Controllers
             return NoContent();
         }
 
-        // POST: api/Properties
+        // POST: api/UserLogins
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Property>> PostProperty(Property @property)
+        public async Task<ActionResult<UserLogin>> PostUserLogin(UserLogin userLogin)
         {
-            _context.Properties.Add(@property);
+            _context.UserLogins.Add(userLogin);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProperty", new { id = @property.PropertyID }, @property);
+            return CreatedAtAction("GetUserLogin", new { id = userLogin.UserID }, userLogin);
         }
 
-        // DELETE: api/Properties/5
+        // DELETE: api/UserLogins/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProperty(int id)
+        public async Task<IActionResult> DeleteUserLogin(int id)
         {
-            var @property = await _context.Properties.FindAsync(id);
-            if (@property == null)
+            var userLogin = await _context.UserLogins.FindAsync(id);
+            if (userLogin == null)
             {
                 return NotFound();
             }
 
-            _context.Properties.Remove(@property);
+            _context.UserLogins.Remove(userLogin);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PropertyExists(int id)
+        private bool UserLoginExists(int id)
         {
-            return _context.Properties.Any(e => e.PropertyID == id);
+            return _context.UserLogins.Any(e => e.UserID == id);
         }
     }
 }

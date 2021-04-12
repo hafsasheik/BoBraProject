@@ -1,0 +1,68 @@
+﻿@model BoBra.Models.Property
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Property</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label"></label>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LivingArea" class="control-label"></label>
+                <input asp-for="LivingArea" class="form-control" />
+                <span asp-validation-for="LivingArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rooms" class="control-label"></label>
+                <input asp-for="Rooms" class="form-control" />
+                <span asp-validation-for="Rooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildYear" class="control-label"></label>
+                <input asp-for="BuildYear" class="form-control" />
+                <span asp-validation-for="BuildYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HouseType" class="control-label"></label>
+                <input asp-for="HouseType" class="form-control" />
+                <span asp-validation-for="HouseType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlotArea" class="control-label"></label>
+                <input asp-for="PlotArea" class="form-control" />
+                <span asp-validation-for="PlotArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BiArea" class="control-label"></label>
+                <input asp-for="BiArea" class="form-control" />
+                <span asp-validation-for="BiArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ViewingDate" class="control-label"></label>
+                <input asp-for="ViewingDate" class="form-control" />
+                <span asp-validation-for="ViewingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

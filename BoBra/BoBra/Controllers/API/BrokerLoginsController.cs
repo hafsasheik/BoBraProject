@@ -12,47 +12,47 @@ namespace BoBra.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrokersController : ControllerBase
+    public class BrokerLoginsController : Controller
     {
         private readonly BoBraContext _context;
 
-        public BrokersController(BoBraContext context)
+        public BrokerLoginsController(BoBraContext context)
         {
             _context = context;
         }
 
-        // GET: api/Brokers
+        // GET: api/BrokerLogins
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Broker>>> GetBrokers()
+        public async Task<ActionResult<IEnumerable<BrokerLogin>>> GetBrokerLogins()
         {
-            return await _context.Brokers.ToListAsync();
+            return await _context.BrokerLogins.ToListAsync();
         }
 
-        // GET: api/Brokers/5
+        // GET: api/BrokerLogins/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Broker>> GetBroker(int id)
+        public async Task<ActionResult<BrokerLogin>> GetBrokerLogin(int id)
         {
-            var broker = await _context.Brokers.FindAsync(id);
+            var brokerLogin = await _context.BrokerLogins.FindAsync(id);
 
-            if (broker == null)
+            if (brokerLogin == null)
             {
                 return NotFound();
             }
 
-            return broker;
+            return brokerLogin;
         }
 
-        // PUT: api/Brokers/5
+        // PUT: api/BrokerLogins/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBroker(int id, Broker broker)
+        public async Task<IActionResult> PutBrokerLogin(int id, BrokerLogin brokerLogin)
         {
-            if (id != broker.BrokerID)
+            if (id != brokerLogin.MKID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(broker).State = EntityState.Modified;
+            _context.Entry(brokerLogin).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace BoBra.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BrokerExists(id))
+                if (!BrokerLoginExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace BoBra.Controllers
             return NoContent();
         }
 
-        // POST: api/Brokers
+        // POST: api/BrokerLogins
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Broker>> PostBroker(Broker broker)
+        public async Task<ActionResult<BrokerLogin>> PostBrokerLogin(BrokerLogin brokerLogin)
         {
-            _context.Brokers.Add(broker);
+            _context.BrokerLogins.Add(brokerLogin);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBroker", new { id = broker.BrokerID }, broker);
+            return CreatedAtAction("GetBrokerLogin", new { id = brokerLogin.MKID }, brokerLogin);
         }
 
-        // DELETE: api/Brokers/5
+        // DELETE: api/BrokerLogins/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBroker(int id)
+        public async Task<IActionResult> DeleteBrokerLogin(int id)
         {
-            var broker = await _context.Brokers.FindAsync(id);
-            if (broker == null)
+            var brokerLogin = await _context.BrokerLogins.FindAsync(id);
+            if (brokerLogin == null)
             {
                 return NotFound();
             }
 
-            _context.Brokers.Remove(broker);
+            _context.BrokerLogins.Remove(brokerLogin);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool BrokerExists(int id)
+        private bool BrokerLoginExists(int id)
         {
-            return _context.Brokers.Any(e => e.BrokerID == id);
+            return _context.BrokerLogins.Any(e => e.MKID == id);
         }
     }
 }

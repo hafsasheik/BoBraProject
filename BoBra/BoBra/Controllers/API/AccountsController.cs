@@ -12,47 +12,47 @@ namespace BoBra.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserLoginsController : ControllerBase
+    public class AccountsController : Controller
     {
         private readonly BoBraContext _context;
 
-        public UserLoginsController(BoBraContext context)
+        public AccountsController(BoBraContext context)
         {
             _context = context;
         }
 
-        // GET: api/UserLogins
+        // GET: api/Accounts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserLogin>>> GetUserLogins()
+        public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
         {
-            return await _context.UserLogins.ToListAsync();
+            return await _context.Accounts.ToListAsync();
         }
 
-        // GET: api/UserLogins/5
+        // GET: api/Accounts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserLogin>> GetUserLogin(int id)
+        public async Task<ActionResult<Account>> GetAccount(int id)
         {
-            var userLogin = await _context.UserLogins.FindAsync(id);
+            var account = await _context.Accounts.FindAsync(id);
 
-            if (userLogin == null)
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return userLogin;
+            return account;
         }
 
-        // PUT: api/UserLogins/5
+        // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserLogin(int id, UserLogin userLogin)
+        public async Task<IActionResult> PutAccount(int id, Account account)
         {
-            if (id != userLogin.UserID)
+            if (id != account.AccountID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(userLogin).State = EntityState.Modified;
+            _context.Entry(account).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace BoBra.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserLoginExists(id))
+                if (!AccountExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace BoBra.Controllers
             return NoContent();
         }
 
-        // POST: api/UserLogins
+        // POST: api/Accounts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserLogin>> PostUserLogin(UserLogin userLogin)
+        public async Task<ActionResult<Account>> PostAccount(Account account)
         {
-            _context.UserLogins.Add(userLogin);
+            _context.Accounts.Add(account);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUserLogin", new { id = userLogin.UserID }, userLogin);
+            return CreatedAtAction("GetAccount", new { id = account.AccountID }, account);
         }
 
-        // DELETE: api/UserLogins/5
+        // DELETE: api/Accounts/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserLogin(int id)
+        public async Task<IActionResult> DeleteAccount(int id)
         {
-            var userLogin = await _context.UserLogins.FindAsync(id);
-            if (userLogin == null)
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            _context.UserLogins.Remove(userLogin);
+            _context.Accounts.Remove(account);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool UserLoginExists(int id)
+        private bool AccountExists(int id)
         {
-            return _context.UserLogins.Any(e => e.UserID == id);
+            return _context.Accounts.Any(e => e.AccountID == id);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BoBra.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Broker_PropertyController : ControllerBase
+    public class Broker_PropertyController : Controller
     {
         private readonly BoBraContext _context;
 

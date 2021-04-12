@@ -12,47 +12,47 @@ namespace BoBra.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrokerLoginsController : ControllerBase
+    public class PropertiesController : Controller
     {
         private readonly BoBraContext _context;
 
-        public BrokerLoginsController(BoBraContext context)
+        public PropertiesController(BoBraContext context)
         {
             _context = context;
         }
 
-        // GET: api/BrokerLogins
+        // GET: api/Properties
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BrokerLogin>>> GetBrokerLogins()
+        public async Task<ActionResult<IEnumerable<Property>>> GetProperties()
         {
-            return await _context.BrokerLogins.ToListAsync();
+            return await _context.Properties.ToListAsync();
         }
 
-        // GET: api/BrokerLogins/5
+        // GET: api/Properties/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BrokerLogin>> GetBrokerLogin(int id)
+        public async Task<ActionResult<Property>> GetProperty(int id)
         {
-            var brokerLogin = await _context.BrokerLogins.FindAsync(id);
+            var @property = await _context.Properties.FindAsync(id);
 
-            if (brokerLogin == null)
+            if (@property == null)
             {
                 return NotFound();
             }
 
-            return brokerLogin;
+            return @property;
         }
 
-        // PUT: api/BrokerLogins/5
+        // PUT: api/Properties/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBrokerLogin(int id, BrokerLogin brokerLogin)
+        public async Task<IActionResult> PutProperty(int id, Property @property)
         {
-            if (id != brokerLogin.MKID)
+            if (id != @property.PropertyID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(brokerLogin).State = EntityState.Modified;
+            _context.Entry(@property).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace BoBra.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BrokerLoginExists(id))
+                if (!PropertyExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace BoBra.Controllers
             return NoContent();
         }
 
-        // POST: api/BrokerLogins
+        // POST: api/Properties
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<BrokerLogin>> PostBrokerLogin(BrokerLogin brokerLogin)
+        public async Task<ActionResult<Property>> PostProperty(Property @property)
         {
-            _context.BrokerLogins.Add(brokerLogin);
+            _context.Properties.Add(@property);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBrokerLogin", new { id = brokerLogin.MKID }, brokerLogin);
+            return CreatedAtAction("GetProperty", new { id = @property.PropertyID }, @property);
         }
 
-        // DELETE: api/BrokerLogins/5
+        // DELETE: api/Properties/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBrokerLogin(int id)
+        public async Task<IActionResult> DeleteProperty(int id)
         {
-            var brokerLogin = await _context.BrokerLogins.FindAsync(id);
-            if (brokerLogin == null)
+            var @property = await _context.Properties.FindAsync(id);
+            if (@property == null)
             {
                 return NotFound();
             }
 
-            _context.BrokerLogins.Remove(brokerLogin);
+            _context.Properties.Remove(@property);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool BrokerLoginExists(int id)
+        private bool PropertyExists(int id)
         {
-            return _context.BrokerLogins.Any(e => e.MKID == id);
+            return _context.Properties.Any(e => e.PropertyID == id);
         }
     }
 }

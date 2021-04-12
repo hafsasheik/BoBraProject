@@ -12,47 +12,47 @@ namespace BoBra.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountsController : ControllerBase
+    public class BrokersController : Controller
     {
         private readonly BoBraContext _context;
 
-        public AccountsController(BoBraContext context)
+        public BrokersController(BoBraContext context)
         {
             _context = context;
         }
 
-        // GET: api/Accounts
+        // GET: api/Brokers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
+        public async Task<ActionResult<IEnumerable<Broker>>> GetBrokers()
         {
-            return await _context.Accounts.ToListAsync();
+            return await _context.Brokers.ToListAsync();
         }
 
-        // GET: api/Accounts/5
+        // GET: api/Brokers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Account>> GetAccount(int id)
+        public async Task<ActionResult<Broker>> GetBroker(int id)
         {
-            var account = await _context.Accounts.FindAsync(id);
+            var broker = await _context.Brokers.FindAsync(id);
 
-            if (account == null)
+            if (broker == null)
             {
                 return NotFound();
             }
 
-            return account;
+            return broker;
         }
 
-        // PUT: api/Accounts/5
+        // PUT: api/Brokers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAccount(int id, Account account)
+        public async Task<IActionResult> PutBroker(int id, Broker broker)
         {
-            if (id != account.AccountID)
+            if (id != broker.BrokerID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(account).State = EntityState.Modified;
+            _context.Entry(broker).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace BoBra.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AccountExists(id))
+                if (!BrokerExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace BoBra.Controllers
             return NoContent();
         }
 
-        // POST: api/Accounts
+        // POST: api/Brokers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Account>> PostAccount(Account account)
+        public async Task<ActionResult<Broker>> PostBroker(Broker broker)
         {
-            _context.Accounts.Add(account);
+            _context.Brokers.Add(broker);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAccount", new { id = account.AccountID }, account);
+            return CreatedAtAction("GetBroker", new { id = broker.BrokerID }, broker);
         }
 
-        // DELETE: api/Accounts/5
+        // DELETE: api/Brokers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAccount(int id)
+        public async Task<IActionResult> DeleteBroker(int id)
         {
-            var account = await _context.Accounts.FindAsync(id);
-            if (account == null)
+            var broker = await _context.Brokers.FindAsync(id);
+            if (broker == null)
             {
                 return NotFound();
             }
 
-            _context.Accounts.Remove(account);
+            _context.Brokers.Remove(broker);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool AccountExists(int id)
+        private bool BrokerExists(int id)
         {
-            return _context.Accounts.Any(e => e.AccountID == id);
+            return _context.Brokers.Any(e => e.BrokerID == id);
         }
     }
 }
