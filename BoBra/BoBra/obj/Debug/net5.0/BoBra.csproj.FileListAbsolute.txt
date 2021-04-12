@@ -346,3 +346,8 @@ C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\obj\Debug\net5.0\Razor\
 C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\obj\Debug\net5.0\Razor\Views\Properties\Details.cshtml.g.cs
 C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\obj\Debug\net5.0\Razor\Views\Properties\Edit.cshtml.g.cs
 C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\obj\Debug\net5.0\Razor\Views\Properties\Index.cshtml.g.cs
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\obj\Debug\net5.0\BoBra.MvcApplicationPartsAssemblyInfo.cs
