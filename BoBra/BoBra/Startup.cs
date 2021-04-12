@@ -48,6 +48,9 @@ namespace BoBra
                 .AllowAnyMethod()
                 .AllowAnyHeader()));
 
+            services.AddCors(options => options.AddDefaultPolicy(
+                    builder => builder.AllowAnyOrigin()));
+
         }
 
 
@@ -70,6 +73,8 @@ namespace BoBra
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
