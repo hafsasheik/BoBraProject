@@ -532,3 +532,7 @@ D:\BoBra2\BoBra\BoBra\obj\Debug\net5.0\BoBra.dll
 D:\BoBra2\BoBra\BoBra\obj\Debug\net5.0\ref\BoBra.dll
 D:\BoBra2\BoBra\BoBra\obj\Debug\net5.0\BoBra.pdb
 D:\BoBra2\BoBra\BoBra\obj\Debug\net5.0\BoBra.genruntimeconfig.cache
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Google.Apis.dll
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Google.Apis.Auth.dll
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra\bin\Debug\net5.0\Google.Apis.Core.dll
