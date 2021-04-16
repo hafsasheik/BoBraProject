@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Cs1J5T1BpDHOHX5MylWMBfKjibIVv7YH5S2YsJiIsYoqlcQmO/BziJL8doKPFaOycm+Fqxjj2I7AmaEZDLpYw==",
+  "dgSpecHash": "FRzveRtb8U4nrby0soZasgrvgyloSyuzbUdU1Cw6q9rIqlFQuyEJp12oO2AMjO1LZHXF4K/RaXAvSfLk0ZqBuA==",
   "success": true,
-  "projectFilePath": "D:\\Code\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj",
+  "projectFilePath": "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\filip\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
