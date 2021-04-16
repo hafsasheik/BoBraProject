@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj": {}
+    "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj": {}
   },
   "projects": {
-    "D:\\Code\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj": {
+    "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj",
+        "projectUniqueName": "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj",
         "projectName": "BoBra-Kund-MVC",
-        "projectPath": "D:\\Code\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj",
+        "projectPath": "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\BoBra-Kund-MVC.csproj",
         "packagesPath": "C:\\Users\\filip\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\obj\\",
+        "outputPath": "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
