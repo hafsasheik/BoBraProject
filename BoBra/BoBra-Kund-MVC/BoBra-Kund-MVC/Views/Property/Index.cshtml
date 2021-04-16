@@ -4,73 +4,102 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<head>
+
+</head>
+<body>
+    <h1>Index</h1>
+
+    <div>
+        @foreach (var item in Model)
+        {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://source.unsplash.com/random/286x180" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Adress)</h5>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Rooms) rum och kök</p>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.LivingArea)</p>
+                <p class="card-text">Byggnadsår @Html.DisplayFor(modelItem => item.BuildYear)</p>
+            </div>
+            @Html.ActionLink("Details", "Details", new { id = item.PropertyID })
+        </div>
+        }
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PropertyID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Adress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LivingArea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rooms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BuildYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HouseType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PlotArea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BiArea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ViewingDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PropertyID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LivingArea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BuildYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HouseType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlotArea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BiArea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ViewingDate)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PropertyID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LivingArea)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rooms)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BuildYear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HouseType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlotArea)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BiArea)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ViewingDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PropertyID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LivingArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rooms)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BuildYear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HouseType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlotArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BiArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ViewingDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
