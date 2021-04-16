@@ -43,10 +43,7 @@ namespace BoBra
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BoBra", Version = "v1" });
             });
 
-            services.AddCors(opt => opt.AddPolicy("MyCorsPolicy", builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()));
+            services.AddCors();
 
             services.AddCors(options => options.AddDefaultPolicy(
                     builder => builder.AllowAnyOrigin()));
@@ -74,7 +71,11 @@ namespace BoBra
 
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
             app.UseAuthorization();
 
