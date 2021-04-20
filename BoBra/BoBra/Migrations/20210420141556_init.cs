@@ -116,24 +116,30 @@ namespace BoBra.Migrations
                 name: "Interest_Reg",
                 columns: table => new
                 {
-                    PropertyID = table.Column<int>(type: "int", nullable: false),
-                    AccountID = table.Column<int>(type: "int", nullable: false)
+                    InterestID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    fname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    lname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    number = table.Column<int>(type: "int", nullable: false),
+                    AccountID = table.Column<int>(type: "int", nullable: true),
+                    PropertyID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Interest_Reg", x => new { x.PropertyID, x.AccountID });
+                    table.PrimaryKey("PK_Interest_Reg", x => x.InterestID);
                     table.ForeignKey(
                         name: "FK_Interest_Reg_Account_AccountID",
                         column: x => x.AccountID,
                         principalTable: "Account",
                         principalColumn: "AccountID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Interest_Reg_Property_PropertyID",
                         column: x => x.PropertyID,
                         principalTable: "Property",
                         principalColumn: "PropertyID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -145,6 +151,11 @@ namespace BoBra.Migrations
                 name: "IX_Interest_Reg_AccountID",
                 table: "Interest_Reg",
                 column: "AccountID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Interest_Reg_PropertyID",
+                table: "Interest_Reg",
+                column: "PropertyID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

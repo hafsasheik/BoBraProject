@@ -51,18 +51,18 @@ namespace BoBra.Data
 
             //Interes_Reg
 
-            modelBuilder.Entity<Interest_Reg>()
-                .HasKey(pa => new { pa.PropertyID, pa.AccountID });
+            //modelBuilder.Entity<Interest_Reg>()
+            //    .HasKey(pa => new { pa.PropertyID, pa.AccountID });
 
-            modelBuilder.Entity<Interest_Reg>()
-                .HasOne(pa => pa.Property)
-                .WithMany(p => p.Interest_Reg)
-                .HasForeignKey(pa => pa.PropertyID);
+            //modelBuilder.Entity<Interest_Reg>()
+            //    .HasOne(pa => pa.Property)
+            //    .WithMany(p => p.Interest_Reg)
+            //    .HasForeignKey(pa => pa.PropertyID);
 
-            modelBuilder.Entity<Interest_Reg>()
-                .HasOne(pa => pa.Account)
-                .WithMany(a => a.Interest_Reg)
-                .HasForeignKey(pa => pa.AccountID);
+            //modelBuilder.Entity<Interest_Reg>()
+            //    .HasOne(pa => pa.Account)
+            //    .WithMany(a => a.Interest_Reg)
+            //    .HasForeignKey(pa => pa.AccountID);
 
         }
        

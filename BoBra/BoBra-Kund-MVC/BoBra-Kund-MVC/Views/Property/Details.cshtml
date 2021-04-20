@@ -16,139 +16,98 @@
 
     /* Create two equal columns that floats next to each other */
     .column {
-        float: left;
-        width: 50%;
         padding: 10px;
-        padding-left: 20px;
+        flex: 1 0 33%;
+        flex-grow: 1;
     }
 
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
+    .details-item {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-content: start;
     }
 
     .columninerest {
-        float: left;
+        /*float: left;*/
         width: 33%;
     }
 
     .interest {
         border: 1px solid gray;
     }
+
+    .details-container {
+    }
+
+    .details-info {
+        width: 800px;
+    }
+
+    .columninerest {
+    }
+
+    .header {
+        width: 100%;
+    }
 </style>
 
-<h1>@Html.DisplayFor(model => model.Adress)</h1>
 
-<img class="header" src="https://source.unsplash.com/random/800x400">
 
-<div class="row">
-    <div class="column">
-        <h3 class="rubrik">Adress</h3>
-        <p>@Html.DisplayFor(model => model.Adress)</p>
-    </div>
-    <div class="column">
-        <h3 class="rubrik">Bostadstyp</h3>
-        <p>@Html.DisplayFor(model => model.HouseType)</p>
-    </div>
-    <div class="column">
-        <h3 class="rubrik">Antal rum</h3>
-        <p>@Html.DisplayFor(model => model.Rooms)</p>
-    </div>
-    <div class="column">
-        <h3 class="rubrik">Boarea</h3>
-        <p>@Html.DisplayFor(model => model.LivingArea)</p>
-    </div>
-    <div class="column">
-        <h3 class="rubrik">Bygg år</h3>
-        <p>@Html.DisplayFor(model => model.BuildYear)</p>
-    </div>
-    <div class="column">
-        <h3 class="rubrik">Tomtarea</h3>
-        <p>@Html.DisplayFor(model => model.PlotArea)</p>
-    </div>
-    <div class="column">
-        <h3 class="rubrik">Visningsdatum</h3>
-        <p>@Html.DisplayFor(model => model.ViewingDate)</p>
-    </div>
-    <div class="column">
-        <h3 class="rubrik">Biarea</h3>
-        <p>@Html.DisplayFor(model => model.BiArea)</p>
-    </div>
-</div>
-<div class="columninerest">
-    <div class="interest">
-        <h2>Skicka intresse anmälan</h2>
-        <form action="/">
-            <label for="fname">Förnamn</label><br>
-            <input type="text" id="fname" name="fname" value=""><br>
-            <label for="enamn">Efternamn</label><br>
-            <input type="text" id="lname" name="lname" value=""><br>
-            <label for="email">Email</label><br>
-            <input type="text" id="lname" name="lname" value=""><br>
-            <label for="tfnnummer">Telefonnummer</label><br>
-            <input type="text" id="lname" name="lname" value=""><br>
-            <input type="submit" value="Skicka">
-        </form>
-    </div>
-</div>
+<div class="details-container">
+    <div class="details-info">
+        <h1>@Html.DisplayFor(model => model.Adress)</h1>
 
-    @*<div>
-
-            <hr />
-            <dl class="row">
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Adress)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Adress)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.LivingArea)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.LivingArea)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Rooms)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Rooms)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.BuildYear)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.BuildYear)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.HouseType)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.HouseType)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.PlotArea)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.PlotArea)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.BiArea)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.BiArea)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.ViewingDate)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.ViewingDate)
-                </dd>
-            </dl>
+        <img class="header" src="https://source.unsplash.com/random/800x400">
+        <div class="details-item">
+            <div class="column">
+                <h3 class="rubrik">Adress</h3>
+                <p>@Html.DisplayFor(model => model.Adress)</p>
+            </div>
+            <div class="column">
+                <h3 class="rubrik">Bostadstyp</h3>
+                <p>@Html.DisplayFor(model => model.HouseType)</p>
+            </div>
+            <div class="column">
+                <h3 class="rubrik">Antal rum</h3>
+                <p>@Html.DisplayFor(model => model.Rooms)</p>
+            </div>
+            <div class="column">
+                <h3 class="rubrik">Boarea</h3>
+                <p>@Html.DisplayFor(model => model.LivingArea)</p>
+            </div>
+            <div class="column">
+                <h3 class="rubrik">Bygg år</h3>
+                <p>@Html.DisplayFor(model => model.BuildYear)</p>
+            </div>
+            <div class="column">
+                <h3 class="rubrik">Tomtarea</h3>
+                <p>@Html.DisplayFor(model => model.PlotArea)</p>
+            </div>
+            <div class="column">
+                <h3 class="rubrik">Visningsdatum</h3>
+                <p>@Html.DisplayFor(model => model.ViewingDate)</p>
+            </div>
+            <div class="column">
+                <h3 class="rubrik">Biarea</h3>
+                <p>@Html.DisplayFor(model => model.BiArea)</p>
+            </div>
         </div>
-        <div>
-            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-            <a asp-action="Index">Back to List</a>
-        </div>*@
+    </div>
+    <div class="columninerest">
+        <div class="interest">
+            <h2>Skicka intresse anmälan</h2>
+            <form action="https://localhost:44392/api/Interest_Reg" method="post">
+                <label for="fname">Förnamn</label><br>
+                <input type="text" id="fname" name="fname" value=""><br>
+                <label for="lname">Efternamn</label><br>
+                <input type="text" id="lname" name="lname" value=""><br>
+                <label for="email">Email</label><br>
+                <input type="text" id="email" name="email" value=""><br>
+                <label for="tfnnummer">Telefonnummer</label><br>
+                <input type="text" id="number" name="number" value=""><br>
+                <input type="submit" value="Skicka">
+            </form>
+        </div>
+    </div>
+</div>

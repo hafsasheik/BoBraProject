@@ -116,15 +116,34 @@ namespace BoBra.Migrations
 
             modelBuilder.Entity("BoBra.Models.Interest_Reg", b =>
                 {
-                    b.Property<int>("PropertyID")
+                    b.Property<int>("InterestID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AccountID")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountID")
+                    b.Property<int?>("PropertyID")
                         .HasColumnType("int");
 
-                    b.HasKey("PropertyID", "AccountID");
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("fname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("number")
+                        .HasColumnType("int");
+
+                    b.HasKey("InterestID");
 
                     b.HasIndex("AccountID");
+
+                    b.HasIndex("PropertyID");
 
                     b.ToTable("Interest_Reg");
                 });
@@ -211,21 +230,13 @@ namespace BoBra.Migrations
 
             modelBuilder.Entity("BoBra.Models.Interest_Reg", b =>
                 {
-                    b.HasOne("BoBra.Models.Account", "Account")
+                    b.HasOne("BoBra.Models.Account", null)
                         .WithMany("Interest_Reg")
-                        .HasForeignKey("AccountID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AccountID");
 
-                    b.HasOne("BoBra.Models.Property", "Property")
+                    b.HasOne("BoBra.Models.Property", null)
                         .WithMany("Interest_Reg")
-                        .HasForeignKey("PropertyID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-
-                    b.Navigation("Property");
+                        .HasForeignKey("PropertyID");
                 });
 
             modelBuilder.Entity("BoBra.Models.Account", b =>

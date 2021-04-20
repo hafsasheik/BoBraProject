@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using BoBra.Data;
 using BoBra.Models;
 
-namespace BoBra.Controllers
+namespace BoBra.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Interest_RegController : Controller
+    public class Interest_RegController : ControllerBase
     {
         private readonly BoBraContext _context;
 
@@ -47,7 +47,7 @@ namespace BoBra.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutInterest_Reg(int id, Interest_Reg interest_Reg)
         {
-            if (id != interest_Reg.PropertyID)
+            if (id != interest_Reg.InterestID)
             {
                 return BadRequest();
             }
@@ -79,23 +79,9 @@ namespace BoBra.Controllers
         public async Task<ActionResult<Interest_Reg>> PostInterest_Reg(Interest_Reg interest_Reg)
         {
             _context.Interest_Regs.Add(interest_Reg);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (Interest_RegExists(interest_Reg.PropertyID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInterest_Reg", new { id = interest_Reg.PropertyID }, interest_Reg);
+            return CreatedAtAction("GetInterest_Reg", new { id = interest_Reg.InterestID }, interest_Reg);
         }
 
         // DELETE: api/Interest_Reg/5
@@ -116,7 +102,7 @@ namespace BoBra.Controllers
 
         private bool Interest_RegExists(int id)
         {
-            return _context.Interest_Regs.Any(e => e.PropertyID == id);
+            return _context.Interest_Regs.Any(e => e.InterestID == id);
         }
     }
 }

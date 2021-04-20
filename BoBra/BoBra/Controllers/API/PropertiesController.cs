@@ -49,30 +49,34 @@ namespace BoBra.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProperty(int id, Property @property)
         {
-            if (id != @property.PropertyID)
+            var exists = _context.Properties.FirstOrDefault(e => e.PropertyID == id);
+
+            if (exists == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(@property).State = EntityState.Modified;
+            exists.Adress = property.Adress;
+            exists.BuildYear = property.BuildYear;
+            exists.LivingArea = property.LivingArea;
+            exists.Rooms = property.Rooms;
+            exists.HouseType = property.HouseType;
+            exists.PlotArea = property.PlotArea;
+            exists.BiArea = property.BiArea;
+            exists.ViewingDate = property.ViewingDate;
+
+            _context.Properties.Update(exists);
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception exceptionex)
             {
-                if (!PropertyExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(exceptionex);
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Properties

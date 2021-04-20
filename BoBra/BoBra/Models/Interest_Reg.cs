@@ -8,9 +8,11 @@ namespace BoBra.Models
 {
     public class Interest_Reg
     {
-        public int PropertyID { get; set; }
-        public int AccountID { get; set; }
-        public Property Property { get; set; }
-        public Account Account { get; set; }
+        [Key]
+        public int InterestID { get; set; }
+        public string fname { get; set; }
+        public string lname { get; set; }
+        public string email { get; set; }
+        public int number { get; set; }
     }
 }
