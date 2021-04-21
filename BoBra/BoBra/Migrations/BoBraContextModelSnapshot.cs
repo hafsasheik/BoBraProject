@@ -124,26 +124,24 @@ namespace BoBra.Migrations
                     b.Property<int?>("AccountID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PropertyID")
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("fname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("lname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("number")
+                    b.Property<int>("PropertyID")
                         .HasColumnType("int");
 
                     b.HasKey("InterestID");
 
                     b.HasIndex("AccountID");
-
-                    b.HasIndex("PropertyID");
 
                     b.ToTable("Interest_Reg");
                 });
@@ -233,10 +231,6 @@ namespace BoBra.Migrations
                     b.HasOne("BoBra.Models.Account", null)
                         .WithMany("Interest_Reg")
                         .HasForeignKey("AccountID");
-
-                    b.HasOne("BoBra.Models.Property", null)
-                        .WithMany("Interest_Reg")
-                        .HasForeignKey("PropertyID");
                 });
 
             modelBuilder.Entity("BoBra.Models.Account", b =>
@@ -252,8 +246,6 @@ namespace BoBra.Migrations
             modelBuilder.Entity("BoBra.Models.Property", b =>
                 {
                     b.Navigation("Broker_Property");
-
-                    b.Navigation("Interest_Reg");
                 });
 #pragma warning restore 612, 618
         }

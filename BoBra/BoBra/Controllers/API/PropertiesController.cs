@@ -43,6 +43,20 @@ namespace BoBra.Controllers
             return @property;
         }
 
+        // GET: api/Properties/5/Interest_Reg
+        [HttpGet("{id}/Interest_Reg")]
+        public ActionResult<Interest_Reg> GetInterestRegForProperty(int id)
+        {
+            var @propertyinterest = _context.Interest_Reg.Where(e => e.PropertyID == id);
+
+            if (@propertyinterest == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(@propertyinterest);
+        }
+
         // PUT: api/Properties/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[GoogleAuthorize]

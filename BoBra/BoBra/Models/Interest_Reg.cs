@@ -10,9 +10,10 @@ namespace BoBra.Models
     {
         [Key]
         public int InterestID { get; set; }
-        public string fname { get; set; }
-        public string lname { get; set; }
-        public string email { get; set; }
-        public int number { get; set; }
+        public int PropertyID { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public string Email { get; set; }
+        public int Number { get; set; }
     }
 }

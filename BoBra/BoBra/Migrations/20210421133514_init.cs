@@ -89,6 +89,30 @@ namespace BoBra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Interest_Reg",
+                columns: table => new
+                {
+                    InterestID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PropertyID = table.Column<int>(type: "int", nullable: false),
+                    Fname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Lname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Number = table.Column<int>(type: "int", nullable: false),
+                    AccountID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Interest_Reg", x => x.InterestID);
+                    table.ForeignKey(
+                        name: "FK_Interest_Reg_Account_AccountID",
+                        column: x => x.AccountID,
+                        principalTable: "Account",
+                        principalColumn: "AccountID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Broker_Property",
                 columns: table => new
                 {
@@ -112,36 +136,6 @@ namespace BoBra.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Interest_Reg",
-                columns: table => new
-                {
-                    InterestID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    fname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    lname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    number = table.Column<int>(type: "int", nullable: false),
-                    AccountID = table.Column<int>(type: "int", nullable: true),
-                    PropertyID = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Interest_Reg", x => x.InterestID);
-                    table.ForeignKey(
-                        name: "FK_Interest_Reg_Account_AccountID",
-                        column: x => x.AccountID,
-                        principalTable: "Account",
-                        principalColumn: "AccountID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Interest_Reg_Property_PropertyID",
-                        column: x => x.PropertyID,
-                        principalTable: "Property",
-                        principalColumn: "PropertyID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Broker_Property_PropertyID",
                 table: "Broker_Property",
@@ -151,11 +145,6 @@ namespace BoBra.Migrations
                 name: "IX_Interest_Reg_AccountID",
                 table: "Interest_Reg",
                 column: "AccountID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Interest_Reg_PropertyID",
-                table: "Interest_Reg",
-                column: "PropertyID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -176,10 +165,10 @@ namespace BoBra.Migrations
                 name: "Broker");
 
             migrationBuilder.DropTable(
-                name: "Account");
+                name: "Property");
 
             migrationBuilder.DropTable(
-                name: "Property");
+                name: "Account");
         }
     }
 }

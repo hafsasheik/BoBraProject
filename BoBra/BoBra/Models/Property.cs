@@ -25,7 +25,6 @@ namespace BoBra.Models
         [Required]
         public string BiArea { get; set; }
         public DateTime ViewingDate { get; set; }
-        public List<Interest_Reg> Interest_Reg { get; set; }
         public List<Broker_Property> Broker_Property { get; set; }
     }
 }
