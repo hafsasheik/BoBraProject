@@ -1,6 +1,7 @@
 ﻿using BoBra_Kund_MVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,14 @@ namespace BoBra_Kund_MVC.Controllers
     public class PropertyController : Controller
     {
 
-        //private iconfiguration _config;
-        //private string _apiurl;
+        private readonly IConfiguration _config;
+        private readonly string API_URL;
 
-        //public propertycontroller(iconfiguration config)
-        //{
-        //    _config = config;
-        //    _apiurl = _config.getvalue<string>("apiurl");
-        //}
+        public PropertyController(IConfiguration config)
+        {
+            _config = config;
+            API_URL = _config.GetValue<string>("API_URL");
+        }
 
         // GET: PropertyController
         public async Task<ActionResult> Index()
@@ -29,7 +30,8 @@ namespace BoBra_Kund_MVC.Controllers
 
             using (var client = new HttpClient())
             {
-                var result = await client.GetAsync("https://localhost:44392/api/properties");
+                client.BaseAddress = new Uri(API_URL);
+                var result = await client.GetAsync(API_URL+"properties");
 
                 if (result.IsSuccessStatusCode)
                 {
@@ -51,6 +53,7 @@ namespace BoBra_Kund_MVC.Controllers
 
             using (var client = new HttpClient())
             {
+                client.BaseAddress = new Uri(API_URL);
                 var result = await client.GetAsync("https://localhost:44392/api/properties/" + id);
 
                 if (result.IsSuccessStatusCode)
@@ -69,23 +72,28 @@ namespace BoBra_Kund_MVC.Controllers
         // POST: BookController/Details/5
         public async Task<ActionResult> Registration(PropertyViewModel property)
         {
+
             if (!ModelState.IsValid)
             {
                 return View("Details", property);
             }
 
-            using var client = new HttpClient();
-            var result = await client.PostAsJsonAsync("https://localhost:44392/api/" + "properties/" + property.PropertyID + "/Subscribe", property);
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(API_URL);
 
-            if (result.IsSuccessStatusCode)
-            {
-                ViewData["Message"] = "Good job on subscribing!";
-                return View("Registered");
-            }
-            else if (result.StatusCode == HttpStatusCode.Conflict)
-            {
-                ViewData["Message"] = "You're already subscribed!";
-                return View("Registered");
+                var result = await client.PostAsJsonAsync("https://localhost:44392/api/" + "properties/" + property.PropertyID + "/Subscribe", property);
+
+                if (result.IsSuccessStatusCode)
+                {
+                    ViewData["Message"] = "Good job on subscribing!";
+                    return View("Registered");
+                }
+                else if (result.StatusCode == HttpStatusCode.Conflict)
+                {
+                    ViewData["Message"] = "You're already subscribed!";
+                    return View("Registered");
+                }
             }
 
             return NotFound();
