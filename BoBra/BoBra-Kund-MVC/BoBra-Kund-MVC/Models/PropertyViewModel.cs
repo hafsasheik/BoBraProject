@@ -17,5 +17,18 @@ namespace BoBra_Kund_MVC.Models
         public string PlotArea { get; set; }
         public string BiArea { get; set; }
         public DateTime ViewingDate { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Fname { get; set; }
+
+        [Required]
+        public string Lname { get; set; }
+
+        [Required]
+        public int Number { get; set; }
     }
 }

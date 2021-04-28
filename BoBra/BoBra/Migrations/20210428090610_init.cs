@@ -11,16 +11,14 @@ namespace BoBra.Migrations
                 name: "Account",
                 columns: table => new
                 {
-                    AccountID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Fname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Lname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Number = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Account", x => x.AccountID);
+                    table.PrimaryKey("PK_Account", x => x.Email);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,44 +73,6 @@ namespace BoBra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserLogin",
-                columns: table => new
-                {
-                    UserID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserLogin", x => x.UserID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Interest_Reg",
-                columns: table => new
-                {
-                    InterestID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PropertyID = table.Column<int>(type: "int", nullable: false),
-                    Fname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Lname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Number = table.Column<int>(type: "int", nullable: false),
-                    AccountID = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Interest_Reg", x => x.InterestID);
-                    table.ForeignKey(
-                        name: "FK_Interest_Reg_Account_AccountID",
-                        column: x => x.AccountID,
-                        principalTable: "Account",
-                        principalColumn: "AccountID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Broker_Property",
                 columns: table => new
                 {
@@ -136,15 +96,39 @@ namespace BoBra.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Interest_Reg",
+                columns: table => new
+                {
+                    PropertyID = table.Column<int>(type: "int", nullable: false),
+                    AccountEmail = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Interest_Reg", x => new { x.PropertyID, x.AccountEmail });
+                    table.ForeignKey(
+                        name: "FK_Interest_Reg_Account_AccountEmail",
+                        column: x => x.AccountEmail,
+                        principalTable: "Account",
+                        principalColumn: "Email",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Interest_Reg_Property_PropertyID",
+                        column: x => x.PropertyID,
+                        principalTable: "Property",
+                        principalColumn: "PropertyID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Broker_Property_PropertyID",
                 table: "Broker_Property",
                 column: "PropertyID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Interest_Reg_AccountID",
+                name: "IX_Interest_Reg_AccountEmail",
                 table: "Interest_Reg",
-                column: "AccountID");
+                column: "AccountEmail");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -159,16 +143,13 @@ namespace BoBra.Migrations
                 name: "Interest_Reg");
 
             migrationBuilder.DropTable(
-                name: "UserLogin");
-
-            migrationBuilder.DropTable(
                 name: "Broker");
 
             migrationBuilder.DropTable(
-                name: "Property");
+                name: "Account");
 
             migrationBuilder.DropTable(
-                name: "Account");
+                name: "Property");
         }
     }
 }

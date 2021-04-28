@@ -126,5 +126,68 @@ namespace BoBra.Controllers
         {
             return _context.Properties.Any(e => e.PropertyID == id);
         }
+
+
+       // POST: api/Subscriptions
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost("{propertyID}/Subscribe")]
+        public async Task<ActionResult<Interest_Reg>> Registration(int propertyID, Account account)
+        {
+            // check if the book exists
+            var property = await _context.Properties.FindAsync(propertyID);
+            if (property == null)
+            {
+                return NotFound();
+            }
+
+            // create user if it doesn't exist
+            if (!AccountExists(account.Email))
+            {
+                _context.Account.Add(account);
+                await _context.SaveChangesAsync();
+            }
+
+
+            var registration = new Interest_Reg() { PropertyID = propertyID, AccountEmail = account.Email };
+
+            // check if the user is already subscribed and return conflict
+            if (Interest_RegExists(registration.PropertyID, registration.AccountEmail))
+            {
+                return Conflict();
+            }
+
+            // finally add subscription
+            _context.Interest_Regs.Add(registration);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                throw;
+            }
+
+            return registration;
+        }
+
+        private bool PropertiesExists(int id)
+        {
+            return _context.Properties.Any(e => e.PropertyID == id);
+        }
+
+        private bool Interest_RegExists(int propertyID, string accountEmail)
+        {
+            return _context.Interest_Regs.Any(e => e.PropertyID == propertyID && e.AccountEmail == accountEmail);
+        }
+
+        private bool AccountExists(string email)
+        {
+            return _context.Accounts.Any(e => e.Email == email);
+        }
+
+
+
+
     }
 }

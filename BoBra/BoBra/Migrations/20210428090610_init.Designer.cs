@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoBra.Migrations
 {
     [DbContext(typeof(BoBraContext))]
-    [Migration("20210421133514_init")]
+    [Migration("20210428090610_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,28 +23,20 @@ namespace BoBra.Migrations
 
             modelBuilder.Entity("BoBra.Models.Account", b =>
                 {
-                    b.Property<int>("AccountID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<string>("Email")
-                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Fname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
+                    b.Property<string>("Lname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AccountID");
+                    b.HasKey("Email");
 
                     b.ToTable("Account");
                 });
@@ -118,32 +110,16 @@ namespace BoBra.Migrations
 
             modelBuilder.Entity("BoBra.Models.Interest_Reg", b =>
                 {
-                    b.Property<int>("InterestID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AccountID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Fname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Lname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
-
                     b.Property<int>("PropertyID")
                         .HasColumnType("int");
 
-                    b.HasKey("InterestID");
+                    b.Property<string>("AccountEmail")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
-                    b.HasIndex("AccountID");
+                    b.HasKey("PropertyID", "AccountEmail");
+
+                    b.HasIndex("AccountEmail");
 
                     b.ToTable("Interest_Reg");
                 });
@@ -189,26 +165,6 @@ namespace BoBra.Migrations
                     b.ToTable("Property");
                 });
 
-            modelBuilder.Entity("BoBra.Models.UserLogin", b =>
-                {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("UserLogin");
-                });
-
             modelBuilder.Entity("BoBra.Models.Broker_Property", b =>
                 {
                     b.HasOne("BoBra.Models.Broker", "Broker")
@@ -230,14 +186,26 @@ namespace BoBra.Migrations
 
             modelBuilder.Entity("BoBra.Models.Interest_Reg", b =>
                 {
-                    b.HasOne("BoBra.Models.Account", null)
-                        .WithMany("Interest_Reg")
-                        .HasForeignKey("AccountID");
+                    b.HasOne("BoBra.Models.Account", "Account")
+                        .WithMany("Interest_Regs")
+                        .HasForeignKey("AccountEmail")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BoBra.Models.Property", "Property")
+                        .WithMany()
+                        .HasForeignKey("PropertyID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("BoBra.Models.Account", b =>
                 {
-                    b.Navigation("Interest_Reg");
+                    b.Navigation("Interest_Regs");
                 });
 
             modelBuilder.Entity("BoBra.Models.Broker", b =>
