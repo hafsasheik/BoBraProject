@@ -97,16 +97,36 @@
     <div class="columninerest">
         <div class="interest">
             <h2>Skicka intresse anmälan</h2>
-            <form action="https://localhost:44392/api/Interest_Reg" method="post">
-                <label for="fname">Förnamn</label><br>
-                <input type="text" id="Fname" name="fname" value=""><br>
-                <label for="lname">Efternamn</label><br>
-                <input type="text" id="Lname" name="lname" value=""><br>
-                <label for="email">Email</label><br>
-                <input type="text" id="Email" name="email" value=""><br>
-                <label for="number">Telefonnummer</label><br>
-                <input type="number" id="Number" name="number" value=""><br>
-                <input type="submit" value="Skicka">
+            <form asp-action="Registration" method="post">
+                <div class="form-group" hidden>
+                    <label asp-for="PropertyID" class="control-label"></label>
+                    <input asp-for="PropertyID" class="form-control" />
+                    <span asp-validation-for="PropertyID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Fname" class="control-label"></label>
+                    <input asp-for="Fname" class="form-control" />
+                    <span asp-validation-for="Fname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lname" class="control-label"></label>
+                    <input asp-for="Lname" class="form-control" />
+                    <span asp-validation-for="Lname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Number" class="control-label"></label>
+                    <input asp-for="Number" class="form-control" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input type="submit" value="Subscribe!" class="btn btn-primary" />
+                </div>
             </form>
         </div>
     </div>

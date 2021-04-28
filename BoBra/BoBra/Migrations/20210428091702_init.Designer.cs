@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoBra.Migrations
 {
     [DbContext(typeof(BoBraContext))]
-    [Migration("20210428090610_init")]
+    [Migration("20210428091702_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

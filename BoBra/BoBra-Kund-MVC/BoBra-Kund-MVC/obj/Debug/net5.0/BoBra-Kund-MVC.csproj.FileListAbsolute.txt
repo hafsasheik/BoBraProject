@@ -1738,3 +1738,4 @@ C:\Users\Admin\Desktop\Dotnet KYH\Webbutveckling\GruppArbete\BoBra\BoBraProject\
 C:\Users\Admin\Desktop\Dotnet KYH\Webbutveckling\GruppArbete\BoBra\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\Debug\net5.0\ref\BoBra-Kund-MVC.dll
 C:\Users\Admin\Desktop\Dotnet KYH\Webbutveckling\GruppArbete\BoBra\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\Debug\net5.0\BoBra-Kund-MVC.pdb
 C:\Users\Admin\Desktop\Dotnet KYH\Webbutveckling\GruppArbete\BoBra\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\Debug\net5.0\BoBra-Kund-MVC.genruntimeconfig.cache
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\Debug\net5.0\Razor\Views\Property\Registered.cshtml.g.cs

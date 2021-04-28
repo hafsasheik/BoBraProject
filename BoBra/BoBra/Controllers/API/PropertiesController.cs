@@ -45,16 +45,16 @@ namespace BoBra.Controllers
 
         // GET: api/Properties/5/Interest_Reg
         [HttpGet("{id}/Interest_Reg")]
-        public ActionResult<Interest_Reg> GetInterestRegForProperty(int id)
+        public async Task<ActionResult<List<Interest_Reg>>> GetInterestRegForProperty(int id)
         {
-            var @propertyinterest = _context.Interest_Reg.Where(e => e.PropertyID == id);
+            var @propertyinterest = await _context.Interest_Reg.ToListAsync();
 
             if (@propertyinterest == null)
             {
                 return NotFound();
             }
 
-            return Ok(@propertyinterest);
+            return (@propertyinterest);
         }
 
         // PUT: api/Properties/5
@@ -128,7 +128,7 @@ namespace BoBra.Controllers
         }
 
 
-       // POST: api/Subscriptions
+        // POST: api/Subscriptions
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost("{propertyID}/Subscribe")]
