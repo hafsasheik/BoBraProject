@@ -2176,3 +2176,4 @@ C:\Users\Joe\source\repos\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\D
 C:\Users\Joe\source\repos\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\Debug\net5.0\ref\BoBra-Kund-MVC.dll
 C:\Users\Joe\source\repos\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\Debug\net5.0\BoBra-Kund-MVC.pdb
 C:\Users\Joe\source\repos\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\obj\Debug\net5.0\BoBra-Kund-MVC.genruntimeconfig.cache
+C:\Users\filip\Documents\GitHub\BoBraProject\BoBra\BoBra-Kund-MVC\BoBra-Kund-MVC\bin\Debug\net5.0\appsettings.Production.json

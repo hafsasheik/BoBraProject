@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="BoBra-Kund-MVC20210428141956" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Joe\\source\\repos\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
+  <parameter name="IIS Web Application Name" description="" value="BoBra-Kund-MVC20210429154328" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra-Kund-MVC\\BoBra-Kund-MVC\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>

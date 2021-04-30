@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joe\\source\\repos\\BoBraProject\\BoBra\\bobra\\BoBra.csproj": {}
+    "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra\\BoBra.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joe\\source\\repos\\BoBraProject\\BoBra\\bobra\\BoBra.csproj": {
+    "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra\\BoBra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joe\\source\\repos\\BoBraProject\\BoBra\\bobra\\BoBra.csproj",
+        "projectUniqueName": "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra\\BoBra.csproj",
         "projectName": "BoBra",
-        "projectPath": "C:\\Users\\Joe\\source\\repos\\BoBraProject\\BoBra\\bobra\\BoBra.csproj",
-        "packagesPath": "C:\\Users\\bubbl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joe\\source\\repos\\BoBraProject\\BoBra\\bobra\\obj\\",
+        "projectPath": "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra\\BoBra.csproj",
+        "packagesPath": "C:\\Users\\filip\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\filip\\Documents\\GitHub\\BoBraProject\\BoBra\\BoBra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\bubbl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\filip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -119,7 +119,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
