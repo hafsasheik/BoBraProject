@@ -54,7 +54,7 @@ namespace BoBra_Kund_MVC.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(API_URL);
-                var result = await client.GetAsync("https://localhost:44392/api/properties/" + id);
+                var result = await client.GetAsync(API_URL + "properties/" + id);
 
                 if (result.IsSuccessStatusCode)
                 {
@@ -82,7 +82,7 @@ namespace BoBra_Kund_MVC.Controllers
             {
                 client.BaseAddress = new Uri(API_URL);
 
-                var result = await client.PostAsJsonAsync("https://localhost:44392/api/" + "properties/" + property.PropertyID + "/Subscribe", property);
+                var result = await client.PostAsJsonAsync(API_URL + "properties/" + property.PropertyID + "/Subscribe", property);
 
                 if (result.IsSuccessStatusCode)
                 {
