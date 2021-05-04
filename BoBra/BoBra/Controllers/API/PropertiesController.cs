@@ -59,7 +59,7 @@ namespace BoBra.Controllers
 
         // PUT: api/Properties/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[GoogleAuthorize]
+        [GoogleAuthorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProperty(int id, Property @property)
         {
@@ -95,7 +95,7 @@ namespace BoBra.Controllers
 
         // POST: api/Properties
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[GoogleAuthorize]
+        [GoogleAuthorize]
         [HttpPost]
         public async Task<ActionResult<Property>> PostProperty(Property @property)
         {
@@ -107,7 +107,7 @@ namespace BoBra.Controllers
 
         // DELETE: api/Properties/5
         [HttpDelete("{id}")]
-        //[GoogleAuthorize]
+        [GoogleAuthorize]
         public async Task<IActionResult> DeleteProperty(int id)
         {
             var @property = await _context.Properties.FindAsync(id);
